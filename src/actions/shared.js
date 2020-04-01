@@ -3,7 +3,7 @@ import { receiveUsers } from './users';
 import { receiveQuestions} from './questions';
 import { setAuthedUser } from '../actions/authedUser'
 
-const AUTHED_ID = 'tylermcginnis'
+// const AUTHED_ID = 'tylermcginnis'
 
 
 // Initial thunk action creator
@@ -13,7 +13,7 @@ export function handleInitialData () {
             .then(({ users, questions }) => {
                 dispatch(receiveUsers(users))
                 dispatch(receiveQuestions(questions))
-                dispatch(setAuthedUser(AUTHED_ID))
+                // dispatch(setAuthedUser(AUTHED_ID))
             })
     }
 }

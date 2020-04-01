@@ -8,7 +8,6 @@ import reducer from './reducers';
 import middleware from './middleware'
 import * as serviceWorker from './serviceWorker';
 
-
 const store = createStore(reducer, middleware)
 
 ReactDOM.render(
