@@ -1,44 +1,50 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Question from './Question';
 
 class Dashboard extends Component {
+
+    state = {
+        showAnsweredQuestions: false
+    }
+
     render() {
         const user = this.props.user;
+        const answered = this.props.answered;
+        const unanswered = this.props.unanswered;
+        const showAnsweredQuestions = this.state.showAnsweredQuestions;
         console.log('props', this.props);
-        console.log('user', user);
         return (
             <div>
                 <h3 className='center'>Would You Rather?</h3>
-                {/*<h3>{this.props.user.name}</h3>*/}
-                {/*<ul className='dashboard-list'>*/}
-                {/*    {test.map((question) => (*/}
-                {/*            <li key={{question.id}}>*/}
-                {/*                <div> ANSWERED QUESTION ID: {question.id}</div>*/}
-                {/*            </li>*/}
-                {/*        )*/}
-                {/*    )}*/}
-                {/*</ul>*/}
-                {/*<ul className='dashboard-list'>*/}
-                {/*    {this.props.answered.map((question) => (*/}
-                {/*        <li key={{question}}>*/}
-                {/*            <div> ANSWERED QUESTION ID: {question.id}</div>*/}
-                {/*        </li>*/}
-                {/*        )*/}
-                {/*    )}*/}
-                {/*</ul>*/}
-                {/*<ul className='dashboard-list'>*/}
-                {/*    {this.props.questionIds.map((id) => (*/}
-                {/*        <li key={{id}}>*/}
-                {/*            <div> QUESTION ID: {id}</div>*/}
-                {/*        </li>*/}
-                {/*        )*/}
-                {/*    )}*/}
-                {/*</ul>*/}
+
+                <button onClick={() => this.setState({ showAnsweredQuestions: false })}>Unanswered</button>
+                <button onClick={() => this.setState({ showAnsweredQuestions: true })}>Answered</button>
+
+                <h4 className='center'>Answered Questions</h4>
+                    <ul className={showAnsweredQuestions ? 'show' : 'hide'}>
+                        {answered.map((question) => (
+                            <li key={question.id}>
+                                {/*<p>{question.id}</p>*/}
+                                <Question question={question} />
+                            </li>
+                        ))}
+                    </ul>
+
+                <h4 className='center'>Unanswered Questions</h4>
+                <ul className={showAnsweredQuestions ? 'hide' : 'show'}>
+                    {unanswered.map((question) => (
+                        <li key={question.id}>
+                            {/*<p>{question.id}</p>*/}
+                            <Question question={question} />
+                        </li>
+                    ))}
+                </ul>
+
             </div>
         )
     }
 }
-
 
 // Get questions from store and sort them by their timestamps
 // filter questions array for both answered and unanswered questions in order to get the object of the question
@@ -67,7 +73,6 @@ function mapStateToProps ({authedUser, questions, users}) {
     };
 
 }
-
 
 // invoke second function that is returned and passing it in Dashboard
 export default connect(mapStateToProps)(Dashboard)
