@@ -13,7 +13,7 @@ class Question extends Component {
         console.log('props', this.props);
         //map over the users for each question in order to obtain name and avatar.
         return (
-            <div className='center'>
+            <div className='card'>
                 <h3>Would You Rather?</h3>
                 <p>{name}</p>
                 <img className='avatar' src={avatar}/>

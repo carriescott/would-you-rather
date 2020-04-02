@@ -15,7 +15,7 @@ class Dashboard extends Component {
         const showAnsweredQuestions = this.state.showAnsweredQuestions;
         console.log('props', this.props);
         return (
-            <div>
+            <div className='center'>
                 <h3 className='center'>Would You Rather?</h3>
                 <div className='center'>
                     <button onClick={() => this.setState({ showAnsweredQuestions: false })}>Unanswered</button>
@@ -28,13 +28,18 @@ class Dashboard extends Component {
                         </li>
                     ))}
                 </ul>
-                <ul className={showAnsweredQuestions ? 'hide' : 'show'}>
-                    {unanswered.map((question) => (
-                        <li key={question.id}>
-                            <Question question={question} />
-                        </li>
-                    ))}
-                </ul>
+
+                <div className='center'>
+                    <ul className={showAnsweredQuestions ? 'hide' : 'show'}>
+                        {unanswered.map((question) => (
+                            <li key={question.id}>
+                                <Question question={question} />
+                            </li>
+                        ))}
+                    </ul>
+
+                </div>
+
             </div>
         )
     }
