@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 
 class Dashboard extends Component {
     render() {
+        const user = this.props.user;
         console.log('props', this.props);
+        console.log('user', user);
         return (
             <div>
                 <h3 className='center'>Would You Rather?</h3>
+                {/*<h3>{this.props.user.name}</h3>*/}
                 {/*<ul className='dashboard-list'>*/}
                 {/*    {test.map((question) => (*/}
                 {/*            <li key={{question.id}}>*/}
@@ -61,7 +64,7 @@ function mapStateToProps ({authedUser, questions, users}) {
         unanswered,
         questionIds: Object.keys(questions)
             .sort((a,b) => questions[a].timestamp - questions[b].timestamp),
-};
+    };
 
 }
 

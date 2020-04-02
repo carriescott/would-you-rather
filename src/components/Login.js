@@ -42,7 +42,7 @@ class Login extends Component {
                             event.target.value)}>
                             <option>-</option>
                             {names.map(name => (
-                                <option key={users[name].id} value={users[name].name}>
+                                <option key={users[name].id} value={users[name].id}>
                                     {users[name].name}
                                 </option>
                             ))}
