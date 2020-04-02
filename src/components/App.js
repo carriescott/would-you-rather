@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Dashboard from './Dashboard'
 import Login from './Login';
 import NewQuestion from './NewQuestion';
+import Leaderboard from './Leaderboard';
 import LoadingBar from 'react-redux-loading';
 import '../App.css';
 
@@ -21,10 +22,10 @@ class App extends Component {
             {this.props.loading === true ? null :
                 <div>
                     <Navbar />
+                    <Leaderboard />
                     <Login />
                     <NewQuestion />
                     <Dashboard />
-
                 </div>
             }
         </div>
