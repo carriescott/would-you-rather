@@ -4,6 +4,7 @@ import { handleInitialData } from '../actions/shared';
 import Navbar from './Navbar';
 import Dashboard from './Dashboard'
 import Login from './Login';
+import NewQuestion from './NewQuestion';
 import LoadingBar from 'react-redux-loading';
 import '../App.css';
 
@@ -21,7 +22,9 @@ class App extends Component {
                 <div>
                     <Navbar />
                     <Login />
+                    <NewQuestion />
                     <Dashboard />
+
                 </div>
             }
         </div>

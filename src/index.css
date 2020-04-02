@@ -151,14 +151,6 @@ li {
   flex-direction: column;
 }
 
-.textarea {
-  border-radius: 4px;
-  border: 1px solid #dad7d7;
-  padding: 10px;
-  font-size: 15px;
-  height: 100px;
-}
-
 .tweet-length {
   text-align: right;
   margin-top: 10px;
@@ -215,4 +207,20 @@ li {
   padding-right: 24px;
   padding-top: 8px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.new-question-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textarea {
+  border-radius: 4px;
+  border: 1px solid #dad7d7;
+  padding: 16px;
+  font-size: 15px;
+  height: auto;
+  width: 400px;
+  margin: 16px;
 }
