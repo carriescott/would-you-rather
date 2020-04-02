@@ -17,30 +17,24 @@ class Dashboard extends Component {
         return (
             <div>
                 <h3 className='center'>Would You Rather?</h3>
-
-                <button onClick={() => this.setState({ showAnsweredQuestions: false })}>Unanswered</button>
-                <button onClick={() => this.setState({ showAnsweredQuestions: true })}>Answered</button>
-
-                <h4 className='center'>Answered Questions</h4>
-                    <ul className={showAnsweredQuestions ? 'show' : 'hide'}>
-                        {answered.map((question) => (
-                            <li key={question.id}>
-                                {/*<p>{question.id}</p>*/}
-                                <Question question={question} />
-                            </li>
-                        ))}
-                    </ul>
-
-                <h4 className='center'>Unanswered Questions</h4>
-                <ul className={showAnsweredQuestions ? 'hide' : 'show'}>
-                    {unanswered.map((question) => (
+                <div className='center'>
+                    <button onClick={() => this.setState({ showAnsweredQuestions: false })}>Unanswered</button>
+                    <button onClick={() => this.setState({ showAnsweredQuestions: true })}>Answered</button>
+                </div>
+                <ul className={showAnsweredQuestions ? 'show' : 'hide'}>
+                    {answered.map((question) => (
                         <li key={question.id}>
-                            {/*<p>{question.id}</p>*/}
                             <Question question={question} />
                         </li>
                     ))}
                 </ul>
-
+                <ul className={showAnsweredQuestions ? 'hide' : 'show'}>
+                    {unanswered.map((question) => (
+                        <li key={question.id}>
+                            <Question question={question} />
+                        </li>
+                    ))}
+                </ul>
             </div>
         )
     }

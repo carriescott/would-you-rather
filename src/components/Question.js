@@ -8,14 +8,28 @@ class Question extends Component {
 
     render() {
         const question = this.props.question;
+        const name = this.props.users[question.author].name;
+        const avatar = this.props.users[question.author].avatarURL;
         console.log('props', this.props);
+        //map over the users for each question in order to obtain name and avatar.
         return (
-            <div>
-                <p>{question.id}</p>
+            <div className='center'>
+                <h3>Would You Rather?</h3>
+                <p>{name}</p>
+                <img className='avatar' src={avatar}/>
+                <p> ...{question.optionOne.text}... </p>
+                <button>View</button>
             </div>
         )
     }
 }
 
+
+function mapStateToProps ({users}) {
+    return {
+        users,
+    };
+}
+
 // invoke second function that is returned and passing it in Dashboard
-export default Question
+export default connect(mapStateToProps)(Question)

@@ -78,12 +78,6 @@ li {
   text-decoration: none;
 }
 
-.avatar {
-  height: 50px;
-  border-radius: 25px;
-  margin: 10px;
-}
-
 .tweet {
   width: 100%;
   max-width: 590px;
@@ -194,4 +188,20 @@ li {
 
 .show {
   display: block;
+}
+
+.avatar {
+  height: 60px;
+  width: 60px;
+  border-radius: 32px;
+  border: solid;
+  margin: 10px;
+}
+
+.userAvatar {
+  height: 70px;
+  width: 70px;
+  border-radius: 35px;
+  /*border: solid 1px;*/
+  margin: 10px;
 }

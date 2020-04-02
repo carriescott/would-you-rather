@@ -19,7 +19,7 @@ class Navbar extends Component {
         const avatar = this.props.userAvatar;
         return (
             <div>
-                <img src={avatar}/>
+                <img className='userAvatar' src={avatar}/>
                 <h3>{userName}</h3>
                 <button>Logout</button>
             </div>
