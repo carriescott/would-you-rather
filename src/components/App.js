@@ -4,6 +4,7 @@ import { handleInitialData } from '../actions/shared';
 import Navbar from './Navbar';
 import Dashboard from './Dashboard'
 import Login from './Login';
+import LoadingBar from 'react-redux-loading';
 import '../App.css';
 
 
@@ -15,12 +16,25 @@ class App extends Component {
   render() {
     return (
         <div>
-            <Navbar />
-            <Login />
-            <Dashboard />
+            <LoadingBar />
+            {this.props.loading === true ? null :
+                <div>
+                    <Navbar />
+                    <Login />
+                    <Dashboard />
+                </div>
+            }
         </div>
     );
   }
 }
 
-export default connect()(App);
+function mapStateToProps ({authedUser}) {
+    return{
+        loading: authedUser === null
+    }
+}
+
+
+
+export default connect(mapStateToProps)(App);
