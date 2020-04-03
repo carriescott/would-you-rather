@@ -1,34 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {handleSaveQuestion} from "../actions/questions";
+import {handleSaveAnswer} from "../actions/questions";
 
 //controlled component
 class QuestionForm extends Component {
 
     state = {
-        optionSelected: null,
+        selectedOption: '',
     }
 
     handleChange = (e) => {
-        const optionOne = e.target.value
+        const selectedOption = e.target.value;
 
         this.setState(() => ({
-            optionOne: optionOne
+            selectedOption: selectedOption
         }))
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        const optionSelected = this.state.optionOne;
-        const author = this.props.authedUser;
-        const question = {
-            optionSelected,
-            author
+
+        const authedUser = this.props.authedUser;
+        const qid = this.props.question.id;
+        const answer = this.state.selectedOption;
+
+        const info = {
+            authedUser,
+            qid,
+            answer
         }
+        console.log('info', info);
         const { dispatch } = this.props;
-        // add question to store
-        dispatch(handleSaveQuestion(question))
-        //return state to ''
+        // // add question to store
+        dispatch(handleSaveAnswer(info))
+        // //return state to ''
         this.setState(() => ({
             optionSelected: '',
         }))
@@ -42,34 +47,35 @@ class QuestionForm extends Component {
         return (
             <div className='center'>
                 <div className='card'>
+                    <h3>Would You Rather?</h3>
 
-                    <p>Select an Option</p>
-                {/*<form className='new-question-form' onSubmit={this.handleSubmit}>*/}
-                {/*    <input*/}
-                {/*        name="optionOne"*/}
-                {/*        type="text-area"*/}
-                {/*        placeholder="option one"*/}
-                {/*        value={optionOne}*/}
-                {/*        onChange={this.handleChangeOptionOne}*/}
-                {/*        className='textarea'*/}
-                {/*        maxLength="60"*/}
-                {/*    />*/}
-                {/*    <span>or ...</span>*/}
-                {/*    <input*/}
-                {/*        name="optionTwo"*/}
-                {/*        type="text-area"*/}
-                {/*        placeholder="option two"*/}
-                {/*        value={optionTwo}*/}
-                {/*        onChange={this.handleChangeOptionTwo}*/}
-                {/*        className='textarea'*/}
-                {/*        maxLength="60"*/}
-                {/*    />*/}
-                {/*    <button*/}
-                {/*        type='submit'*/}
-                {/*        disabled={this.state.optionOne === '' || this.state.optionTwo === ''}>*/}
-                {/*        Save*/}
-                {/*    </button>*/}
-                {/*</form>*/}
+                    <form className='question-form' onSubmit={this.handleSubmit}>
+                        <div className="radio">
+                            <label>
+                                <input type="radio"
+                                       value="optionOne"
+                                       checked={this.state.selectedOption === 'optionOne'}
+                                       onChange={this.handleChange}/>
+                                {question.optionOneText}
+                            </label>
+                        </div>
+                        <div className="radio">
+                            <label>
+                                <input type="radio"
+                                       value="optionTwo"
+                                       checked={this.state.selectedOption === 'optionTwo'}
+                                       onChange={this.handleChange}/>
+                                {question.optionTwoText}
+                            </label>
+                        </div>
+
+                        <button
+                            type='submit'
+                            disabled={this.state.selectedOption === ''}>
+                            Save
+                        </button>
+
+                    </form>
             </div>
             </div>
 

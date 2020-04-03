@@ -20,6 +20,7 @@ class Poll extends Component {
         const pickeOptionTwo = question.optionTwo.votes.includes(this.props.authedUser);
 
         const questionObject = {
+            id: question.id,
             avatarURL: authorObject.avatarURL,
             optionOneText: question.optionOne.text,
             optionTwoText: question.optionTwo.text,
