@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 import {handleSaveQuestion} from "../actions/questions";
 
 //controlled component
@@ -8,6 +9,7 @@ class NewQuestion extends Component {
     state = {
         optionOne: '',
         optionTwo: '',
+        redirect: false,
     }
 
 
@@ -43,14 +45,19 @@ class NewQuestion extends Component {
         //return state to ''
         this.setState(() => ({
             optionOne: '',
-            optionTwo: ''
+            optionTwo: '',
+            redirect: true
         }))
     }
 
     render() {
         const optionOne = this.state.optionOne;
         const optionTwo = this.state.optionTwo;
-        // todo redirect to home view when submitted
+
+        if (this.state.redirect) {
+            return <Redirect to='/' />
+        }
+
         console.log(this.props);
         return (
             <div className='center'>
