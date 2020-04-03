@@ -48,7 +48,8 @@ class QuestionForm extends Component {
             <div className='center'>
                 <div className='card'>
                     <h3>Would You Rather?</h3>
-
+                    <p>{question.author}</p>
+                    <img className="avatar" src={question.avatarURL}/>
                     <form className='question-form' onSubmit={this.handleSubmit}>
                         <div className="radio">
                             <label>

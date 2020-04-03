@@ -21,6 +21,7 @@ class Poll extends Component {
 
         const questionObject = {
             id: question.id,
+            author: author,
             avatarURL: authorObject.avatarURL,
             optionOneText: question.optionOne.text,
             optionTwoText: question.optionTwo.text,
@@ -52,8 +53,8 @@ class Poll extends Component {
         return (
             <div>
                 <h3>Poll</h3>
-                <QuestionForm question={questionObject}/>
-                <QuestionStats question={questionObject}/>
+                {/*<QuestionForm question={questionObject}/>*/}
+                {/*<QuestionStats question={questionObject}/>*/}
                 <NoMatchFound />
             </div>
         )
