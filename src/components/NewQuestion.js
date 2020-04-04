@@ -7,13 +7,13 @@ import {handleSaveQuestion} from "../actions/questions";
 class NewQuestion extends Component {
 
     state = {
+        sent: false,
         optionOne: '',
         optionTwo: '',
-        redirect: false,
     }
     
     handleChangeOptionOne = (e) => {
-        const optionOne = e.target.value
+        const optionOne = e.target.value;
 
         this.setState(() => ({
             optionOne: optionOne
@@ -40,16 +40,20 @@ class NewQuestion extends Component {
         }
         const { dispatch } = this.props;
         // add question to store
-        dispatch(handleSaveQuestion(question))
+        dispatch(handleSaveQuestion(question));
         //return state to ''
         this.setState(() => ({
+            sent: true,
             optionOne: '',
-            optionTwo: '',
-            redirect: true
-        }))
+            optionTwo: ''
+        }));
     }
 
     render() {
+
+        if (this.state.sent === true) {
+            return <Redirect to='/' />
+        }
 
         if (this.props.authedUser === null) {
             return <Redirect to='/login' />
@@ -58,11 +62,9 @@ class NewQuestion extends Component {
         const optionOne = this.state.optionOne;
         const optionTwo = this.state.optionTwo;
 
-        if (this.state.redirect) {
-            return <Redirect to='/' />
-        }
 
         console.log(this.props);
+        console.log('state', this.state);
         return (
             <div className='center'>
                 <h3 className='center'>Would You Rather ... </h3>

@@ -7,7 +7,6 @@ class Login extends Component {
 
     state = {
         value: '-',
-        loading: false,
         redirect: false,
     }
 
@@ -27,8 +26,7 @@ class Login extends Component {
         dispatch(setAuthedUser(AUTHED_ID));
 
         this.setState(() => ({
-            optionOne: '',
-            optionTwo: '',
+            value: '-',
             redirect: true
         }))
     }
@@ -44,28 +42,29 @@ class Login extends Component {
         const users = this.props.users;
         const names = Object.keys(users);
         return (
-            <div>
-                <h3 className='center'>Please Login?</h3>
-                <div>
-                    <form onSubmit={(event) => this.handleSubmit(
-                        event)}>
-                        <select
-                            value={this.state.value}
-                            onChange={(event) => this.setUser(
-                            event.target.value)}>
-                            <option>-</option>
-                            {names.map(name => (
-                                <option key={users[name].id} value={users[name].id}>
-                                    {users[name].name}
-                                </option>
-                            ))}
-                        </select>
-                        <button type="submit"
-                            disabled={this.state.value === '-'}>
-                            Login
-                        </button>
-                    </form>
-                </div>
+            <div className='card center'>
+                <img src='https://gravatar.com/avatar/63f79fd9cd4afe69f4478e306579d16d?s=200&d=robohash&r=x'/>
+                <p className='center font14'>Please Login</p>
+                <form onSubmit={(event) => this.handleSubmit(
+                    event)} className='col'>
+                    <select
+                        value={this.state.value}
+                        onChange={(event) => this.setUser(
+                        event.target.value)}>
+                        <option>-</option>
+                        {names.map(name => (
+                            <option key={users[name].id} value={users[name].id}>
+                                {users[name].name}
+                            </option>
+                        ))}
+                    </select>
+                    <button
+                        className='btn'
+                        type="submit"
+                        disabled={this.state.value === '-'}>
+                        Login
+                    </button>
+                </form>
             </div>
 
         )

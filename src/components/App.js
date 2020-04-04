@@ -12,7 +12,6 @@ import LoadingBar from 'react-redux-loading';
 import NoPageFound from './NoPageFound';
 import '../App.css';
 
-
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
@@ -26,14 +25,13 @@ class App extends Component {
                     <div>
                         <Navbar />
                         <div>
-                            {/*<Route*/}
-                            {/*    path='/' exact*/}
-                            {/*    render={(props) => <Dashboard {...props} isAuthed={true} />}*/}
-                            {/*    />*/}
+                            {this.props.loading === true
+                                ? null
+                                :
                             <Route
                                 path='/' exact
                                 component={Dashboard}
-                            />
+                            />}
                             <Route
                                 path='/login'
                                 exact component={Login}
@@ -54,6 +52,7 @@ class App extends Component {
                                 exact component={NoPageFound}
                             />
                         </div>
+                        {/*}*/}
                     </div>
             </Fragment>
         </Router>
@@ -61,9 +60,13 @@ class App extends Component {
   }
 }
 
-function mapStateToProps ({authedUser}) {
+function mapStateToProps ({authedUser, users, questions, loadingBar}) {
     return{
-        loading: authedUser === null,
+        users,
+        questions,
+        authedUser,
+        loadingBar,
+        loading: loadingBar.default === 1,
         isAuthed: authedUser !== null
     }
 }
