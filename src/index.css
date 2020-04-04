@@ -225,6 +225,7 @@ li {
   justify-content: space-between;
   border-bottom: solid 2px;
   padding-bottom: 8px;
+  align-items: center;
 }
 
 
@@ -316,6 +317,15 @@ select {
 
 .width-100 {
   width: 100%;
+}
+
+.scoreText p{
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.score {
+  width: 104px;
 }
 
 

@@ -40,9 +40,7 @@ class Question extends Component {
                                     </button>
                                 </Link>
                             </div>
-
                         </div>
-
                     </div>
 
                 </div>
