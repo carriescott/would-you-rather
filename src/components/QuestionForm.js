@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 import {handleSaveAnswer} from "../actions/questions";
 
 //controlled component
@@ -7,6 +8,7 @@ class QuestionForm extends Component {
 
     state = {
         selectedOption: '',
+        redirect: false
     }
 
     handleChange = (e) => {
@@ -36,12 +38,18 @@ class QuestionForm extends Component {
         // //return state to ''
         this.setState(() => ({
             optionSelected: '',
+            redirect: true
         }))
     }
 
     render() {
+
         const optionOne = this.state.optionSelected;
         const question = this.props.question;
+
+        if (this.state.redirect) {
+            return <Redirect to='/' />
+        }
 
         console.log(this.props);
         return (

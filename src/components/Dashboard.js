@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Question from './Question';
+import {Redirect} from 'react-router-dom';
 
 class Dashboard extends Component {
 
     state = {
-        showAnsweredQuestions: false
+        showAnsweredQuestions: false,
     }
 
     render() {
+
+        if (this.props.authedUser === null) {
+            return <Redirect to='/login' />
+            }
+
         const user = this.props.user;
         const answered = this.props.answered;
         const unanswered = this.props.unanswered;

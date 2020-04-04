@@ -3,17 +3,28 @@ import { connect } from 'react-redux';
 import QuestionForm from  './QuestionForm';
 import QuestionStats from './QuestionStats';
 import NoMatchFound from './NoMatchFound';
+import {Redirect} from "react-router-dom";
 
 //Import no match found component
 
 class Poll extends Component {
 
     render() {
-        const users = this.props.users
+
+        if (this.props.authedUser === null) {
+            return <Redirect to='/login' />
+        }
+
         const authedUser = this.props.authedUser;
         const questions = this.props.questions;
-        const questionsTest = Object.values(questions);
-        const question = questionsTest[5];
+
+        //set question from ID passed through from routing.
+        const id = this.props.match.params.question_id;
+
+        //check if id exists within the question keys.
+        const matchFound = Object.keys(questions).includes(id);
+        const users = this.props.users
+        const question = questions[id];
         const author = question.author;
         const authorObject = users[author];
         const pickeOptionOne = question.optionOne.votes.includes(this.props.authedUser);
@@ -35,27 +46,24 @@ class Poll extends Component {
         }
 
         const isAnswered =
-            question.optionOne.votes.includes(this.props.authedUser) ||
-            question.optionTwo.votes.includes(this.props.authedUser);
+            question.optionOne.votes.includes(authedUser) ||
+            question.optionTwo.votes.includes(authedUser);
 
-        console.log('isAnswered', isAnswered);
+        let render = null;
 
-        // const authorObject =
-        // const answered
-
-        // if (!isAnswered) {
-        //     renderQuestion = <QuestionForm question={question} />;
-        // } else {
-        //     renderQuestion = <QuestionStats question={question} />;
-        // }
+        if (!matchFound) {
+            render = <NoMatchFound />
+        } else if (matchFound && !isAnswered) {
+            render = <QuestionForm question={questionObject}/>
+        } else if (matchFound && isAnswered) {
+            render = <QuestionStats question={questionObject}/>
+        }
 
         //map over the users for each question in order to obtain name and avatar.
         return (
             <div>
                 <h3>Poll</h3>
-                {/*<QuestionForm question={questionObject}/>*/}
-                {/*<QuestionStats question={questionObject}/>*/}
-                <NoMatchFound />
+                {render}
             </div>
         )
     }

@@ -9,6 +9,7 @@ import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
 import Poll from './Poll';
 import LoadingBar from 'react-redux-loading';
+import NoPageFound from './NoPageFound';
 import '../App.css';
 
 
@@ -24,22 +25,35 @@ class App extends Component {
                 <LoadingBar />
                     <div>
                         <Navbar />
-                        {this.props.loading === true
-                            ? null
-                            : <div>
-
-                                <Route path='/' exact component={Dashboard} />
-                                <Route path='/login' exact component={Login} />
-                                <Route path='/leaderboard' exact component={Leaderboard} />
-                                <Route path='/questions/:question_id' exact component={Poll} />
-                                <Route path='/add' exact component={NewQuestion} />
-
-                                {/*<Leaderboard />*/}
-                                {/*<Login />*/}
-                                {/*<NewQuestion />*/}
-                                {/*<Dashboard />*/}
-                                {/*<Poll />*/}
-                            </div>}
+                        <div>
+                            {/*<Route*/}
+                            {/*    path='/' exact*/}
+                            {/*    render={(props) => <Dashboard {...props} isAuthed={true} />}*/}
+                            {/*    />*/}
+                            <Route
+                                path='/' exact
+                                component={Dashboard}
+                            />
+                            <Route
+                                path='/login'
+                                exact component={Login}
+                            />
+                            <Route
+                                path='/leaderboard'
+                                exact component={Leaderboard}
+                            />
+                            <Route
+                                path='/questions/:question_id'
+                                exact component={Poll} />
+                            <Route
+                                path='/add'
+                                exact component={NewQuestion}
+                            />
+                            <Route
+                                path='/404'
+                                exact component={NoPageFound}
+                            />
+                        </div>
                     </div>
             </Fragment>
         </Router>
@@ -49,7 +63,8 @@ class App extends Component {
 
 function mapStateToProps ({authedUser}) {
     return{
-        loading: authedUser === null
+        loading: authedUser === null,
+        isAuthed: authedUser !== null
     }
 }
 

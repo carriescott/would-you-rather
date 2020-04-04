@@ -11,8 +11,7 @@ class NewQuestion extends Component {
         optionTwo: '',
         redirect: false,
     }
-
-
+    
     handleChangeOptionOne = (e) => {
         const optionOne = e.target.value
 
@@ -51,6 +50,11 @@ class NewQuestion extends Component {
     }
 
     render() {
+
+        if (this.props.authedUser === null) {
+            return <Redirect to='/login' />
+        }
+
         const optionOne = this.state.optionOne;
         const optionTwo = this.state.optionTwo;
 

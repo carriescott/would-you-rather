@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {setAuthedUser} from '../actions/authedUser';
+import {Redirect} from "react-router-dom";
 
 class Login extends Component {
 
     state = {
         value: '-',
         loading: false,
+        redirect: false,
     }
 
     // set the user in the state object
@@ -23,11 +25,22 @@ class Login extends Component {
         const { dispatch } = this.props;
         const AUTHED_ID = this.state.value;
         dispatch(setAuthedUser(AUTHED_ID));
+
+        this.setState(() => ({
+            optionOne: '',
+            optionTwo: '',
+            redirect: true
+        }))
     }
 
 
     // When the component first initialises clear the AUTHED_ID
     render() {
+
+        if (this.state.redirect && this.props.authedUser) {
+            return <Redirect to='/' />
+        }
+
         const users = this.props.users;
         const names = Object.keys(users);
         return (
@@ -60,9 +73,10 @@ class Login extends Component {
 }
 
 // Return users from the redux store
-function mapStateToProps({users}) {
+function mapStateToProps({users, authedUser}) {
     return {
         users,
+        authedUser
     };
 }
 

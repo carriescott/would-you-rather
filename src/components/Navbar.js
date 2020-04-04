@@ -10,15 +10,13 @@ class Navbar extends Component {
     handleLogout = (event) => {
         event.preventDefault();
         const { dispatch } = this.props;
-        dispatch(removeAuthedUser());
+        dispatch(removeAuthedUser(null));
     }
 
     render() {
         const userName = this.props.userName;
         const avatar = this.props.userAvatar;
         const userIsAuthed = this.props.userIsAuthed;
-        // const userIsAuthed = false;
-        console.log('loggedIn', userIsAuthed);
 
         return (
             <div className='row'>
@@ -45,7 +43,8 @@ class Navbar extends Component {
                     <div className='col'>
                     <img className='userAvatar' src={avatar}/>
                     <p>{userName}</p>
-                    <button>Logout</button>
+                    <button onClick={(event) => this.handleLogout(
+                        event)}>Logout</button>
                 </div>:
                     null
                 }
