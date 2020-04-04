@@ -19,7 +19,7 @@ class Navbar extends Component {
         const userIsAuthed = this.props.userIsAuthed;
 
         return (
-            <div className='row'>
+            <div className='navContainer'>
                 <nav className='nav'>
                     <ul>
                         <li>
@@ -40,11 +40,14 @@ class Navbar extends Component {
                     </ul>
                 </nav>
                 {userIsAuthed ?
-                    <div className='col'>
-                    <img className='userAvatar' src={avatar}/>
-                    <p>{userName}</p>
-                    <button onClick={(event) => this.handleLogout(
-                        event)}>Logout</button>
+                    <div className='userInfo center'>
+                    <div className='col userInformation' >
+                        <img className='userAvatar' src={avatar}/>
+                        <p>Hi {userName}</p>
+                    <button className='btn' onClick={(event) => this.handleLogout(
+                        event)}>Logout
+                    </button>
+                    </div>
                 </div>:
                     null
                 }

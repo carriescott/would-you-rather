@@ -168,8 +168,8 @@ li {
 }
 
 .userAvatar {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   border-radius: 21px;
   margin: 10px;
 }
@@ -241,6 +241,45 @@ li {
   font-size: 14px;
 }
 
+.marginTop {
+  margin-top: 40px;
+}
 
+select {
+  height: 40px;
+  width: 240px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.imgLogin {
+  height: 150px;
+  width: 150px;
+  margin-bottom: 40px;
+}
 
+.userInfo {
+  display: flex;
+  flex-direction: row;
+}
+
+.userInfo p{
+  margin: 0;
+  font-size: 14px;
+  padding: 0;
+}
+
+.userInfo .btn {
+  margin: 0;
+  height: 32px;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.userInformation {
+  align-items: center;
+}

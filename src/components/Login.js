@@ -6,33 +6,29 @@ import {Redirect} from "react-router-dom";
 class Login extends Component {
 
     state = {
-        value: '-',
+        value: 'Please set a user',
         redirect: false,
     }
 
-    // set the user in the state object
-    // take in the previous state in order to set new state
     setUser = (event) => {
         this.setState({
             value: event
         });
     }
 
-    //Update route when promise has been returned
     handleSubmit = (event) => {
         event.preventDefault();
         const { dispatch } = this.props;
         const AUTHED_ID = this.state.value;
         dispatch(setAuthedUser(AUTHED_ID));
 
+        //set state redirect as true to redirect to the dashboard
         this.setState(() => ({
             value: '-',
             redirect: true
         }))
     }
 
-
-    // When the component first initialises clear the AUTHED_ID
     render() {
 
         if (this.state.redirect && this.props.authedUser) {
@@ -42,16 +38,16 @@ class Login extends Component {
         const users = this.props.users;
         const names = Object.keys(users);
         return (
-            <div className='card center'>
-                <img src='https://gravatar.com/avatar/63f79fd9cd4afe69f4478e306579d16d?s=200&d=robohash&r=x'/>
-                <p className='center font14'>Please Login</p>
+            <div className='card center marginTop'>
+                <h3>Would You Rather... ?</h3>
+                <img className='imgLogin' src='https://gravatar.com/avatar/63f79fd9cd4afe69f4478e306579d16d?s=200&d=robohash&r=x'/>
                 <form onSubmit={(event) => this.handleSubmit(
                     event)} className='col'>
                     <select
                         value={this.state.value}
                         onChange={(event) => this.setUser(
                         event.target.value)}>
-                        <option>-</option>
+                        <option>Please set a user</option>
                         {names.map(name => (
                             <option key={users[name].id} value={users[name].id}>
                                 {users[name].name}
@@ -61,8 +57,8 @@ class Login extends Component {
                     <button
                         className='btn'
                         type="submit"
-                        disabled={this.state.value === '-'}>
-                        Login
+                        disabled={this.state.value === 'Please set a user'}>
+                        Let's Play
                     </button>
                 </form>
             </div>
@@ -71,7 +67,7 @@ class Login extends Component {
     }
 }
 
-// Return users from the redux store
+// return the users and authuser states from the redux store and map to props
 function mapStateToProps({users, authedUser}) {
     return {
         users,
@@ -79,5 +75,4 @@ function mapStateToProps({users, authedUser}) {
     };
 }
 
-// invoke second function that is returned and passing it in Login
 export default connect(mapStateToProps)(Login)
