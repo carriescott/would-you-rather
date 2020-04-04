@@ -222,7 +222,7 @@ li {
 .questionInformation {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   border-bottom: solid 2px;
   padding-bottom: 8px;
 }
@@ -302,7 +302,6 @@ select {
   margin-right: auto;
   width: 400px;
 }
-
 .nameContainer {
   border-bottom: solid 2px;
   border-color: black;
@@ -310,5 +309,13 @@ select {
   margin-bottom: 8px;
 }
 
+.margin-10-lr {
+  margin-left:10px;
+  margin-right: 10px;
+}
+
+.width-100 {
+  width: 100%;
+}
 
 

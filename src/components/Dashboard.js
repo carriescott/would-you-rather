@@ -23,12 +23,12 @@ class Dashboard extends Component {
             <div className='center'>
                 <div className='center listBtnContainer'>
                     <button
-                        className={showAnsweredQuestions ? 'btn' : 'active btn'}
+                        className={showAnsweredQuestions ? 'btn margin-10-lr' : 'active btn margin-10-lr' }
                         onClick={() => this.setState({ showAnsweredQuestions: false })}>
                         Unanswered
                     </button>
                     <button
-                        className={showAnsweredQuestions ? 'active btn' : 'btn'}
+                        className={showAnsweredQuestions ? 'active btn margin-10-lr' : 'btn margin-10-lr'}
                         onClick={() => this.setState({ showAnsweredQuestions: true })}>
                         Answered
                     </button>

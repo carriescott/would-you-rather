@@ -32,7 +32,7 @@ class Question extends Component {
                                      alt={'Avatar of ${name}'}
                                 />
                             </div>
-                            <div className='col'>
+                            <div className='col width-100'>
                                 <p> ...{question.optionOne.text}... </p>
                                 <Link to={`/questions/${id}`}>
                                     <button className='btn'>
