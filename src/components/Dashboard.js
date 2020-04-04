@@ -9,23 +9,29 @@ class Dashboard extends Component {
         showAnsweredQuestions: false,
     }
 
-    render() {
 
+    render() {
         if (this.props.authedUser === null) {
             return <Redirect to='/login' />
             }
-
         const user = this.props.user;
         const answered = this.props.answered;
         const unanswered = this.props.unanswered;
         const showAnsweredQuestions = this.state.showAnsweredQuestions;
-        console.log('props', this.props);
+
         return (
             <div className='center'>
-                <h3 className='center'>Would You Rather?</h3>
-                <div className='center'>
-                    <button onClick={() => this.setState({ showAnsweredQuestions: false })}>Unanswered</button>
-                    <button onClick={() => this.setState({ showAnsweredQuestions: true })}>Answered</button>
+                <div className='center listBtnContainer'>
+                    <button
+                        className={showAnsweredQuestions ? 'btn' : 'active btn'}
+                        onClick={() => this.setState({ showAnsweredQuestions: false })}>
+                        Unanswered
+                    </button>
+                    <button
+                        className={showAnsweredQuestions ? 'active btn' : 'btn'}
+                        onClick={() => this.setState({ showAnsweredQuestions: true })}>
+                        Answered
+                    </button>
                 </div>
                 <ul className={showAnsweredQuestions ? 'show' : 'hide'}>
                     {answered.map((question) => (

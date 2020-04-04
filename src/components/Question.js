@@ -20,18 +20,31 @@ class Question extends Component {
         return (
 
                 <div className='card'>
-                    <h3>Would You Rather?</h3>
-                    <p>{name}</p>
-                    <img className='avatar'
-                         src={avatar}
-                         alt={'Avatar of ${name}'}
-                    />
-                    <p> ...{question.optionOne.text}... </p>
-                    <Link to={`/questions/${id}`}>
-                        <button>
-                            View
-                        </button>
-                    </Link>
+                    <div className='col'>
+                        <div className='nameContainer'>
+                            <p>{name} asks would you rather ...</p>
+                        </div>
+
+                        <div className='questionInformation'>
+                            <div className='col'>
+                                <img className='avatar'
+                                     src={avatar}
+                                     alt={'Avatar of ${name}'}
+                                />
+                            </div>
+                            <div className='col'>
+                                <p> ...{question.optionOne.text}... </p>
+                                <Link to={`/questions/${id}`}>
+                                    <button className='btn'>
+                                        View
+                                    </button>
+                                </Link>
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
         )

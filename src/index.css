@@ -34,11 +34,16 @@ a {
   font-weight: bold;
 }
 
+/*.nav {*/
+/*  border-bottom: solid;*/
+/*}*/
+
 .nav ul {
   display: flex;
   flex-direction: row;
   justify-content: center;
   text-decoration: none;
+  border-bottom: solid;
 }
 
 .nav li:first-child {
@@ -160,12 +165,13 @@ li {
 }
 
 .avatar {
-  height: 60px;
-  width: 60px;
-  border-radius: 32px;
-  border: solid;
-  margin: 10px;
+  height: 80px;
+  width: 80px;
+  border-radius: 44px;
+  border: solid 2px;
+  margin: 8px;
 }
+
 
 .userAvatar {
   height: 50px;
@@ -213,9 +219,17 @@ li {
   flex-direction: column;
 }
 
+.questionInformation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: solid 2px;
+  padding-bottom: 8px;
+}
+
 
 .btn {
-  margin: 35px auto;
+  margin: 0 auto;
   padding: 8px;
   border: 1px solid rgba(0,0,0,.29);
   cursor: pointer;
@@ -270,8 +284,7 @@ select {
 }
 
 .userInfo .btn {
-  margin: 0;
-  height: 32px;
+  margin-top: 8px;
 }
 
 .navContainer {
@@ -283,3 +296,19 @@ select {
 .userInformation {
   align-items: center;
 }
+
+.listBtnContainer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+}
+
+.nameContainer {
+  border-bottom: solid 2px;
+  border-color: black;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+
+
