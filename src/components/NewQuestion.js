@@ -68,7 +68,7 @@ class NewQuestion extends Component {
         return (
             <div className='center'>
                 <h3 className='center'>Would You Rather ... </h3>
-                <p>To create a new question, enter two options in the text fields provided</p>
+                <p>To create a new question your options in the fields provided</p>
                 <form className='new-question-form' onSubmit={this.handleSubmit}>
                     <input
                         name="optionOne"
@@ -90,6 +90,7 @@ class NewQuestion extends Component {
                         maxLength="60"
                     />
                     <button
+                        className='btn'
                     type='submit'
                     disabled={this.state.optionOne === '' || this.state.optionTwo === ''}>
                         Save

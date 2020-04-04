@@ -27,20 +27,23 @@ class Poll extends Component {
         const question = questions[id];
         const author = question.author;
         const authorObject = users[author];
+        const name = authorObject.name;
         const pickeOptionOne = question.optionOne.votes.includes(this.props.authedUser);
         const pickeOptionTwo = question.optionTwo.votes.includes(this.props.authedUser);
 
+        console.log('authorObject', authorObject);
+
         const questionObject = {
             id: question.id,
-            author: author,
+            author: name,
             avatarURL: authorObject.avatarURL,
             optionOneText: question.optionOne.text,
             optionTwoText: question.optionTwo.text,
             optionOneTotal: question.optionOne.votes.length,
             optionTwoTotal: question.optionTwo.votes.length,
             totalVotes: (question.optionOne.votes.length + question.optionTwo.votes.length),
-            optionOnePercent: (question.optionOne.votes.length/(question.optionOne.votes.length + question.optionTwo.votes.length)),
-            optionTwoPercent: (question.optionTwo.votes.length/(question.optionOne.votes.length + question.optionTwo.votes.length)),
+            optionOnePercent: ((question.optionOne.votes.length/(question.optionOne.votes.length + question.optionTwo.votes.length))*100),
+            optionTwoPercent: ((question.optionTwo.votes.length/(question.optionOne.votes.length + question.optionTwo.votes.length))*100),
             pickedOptionOne: pickeOptionOne,
             pickedOptionTwo: pickeOptionTwo
         }

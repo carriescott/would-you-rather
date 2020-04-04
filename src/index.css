@@ -315,6 +315,10 @@ select {
   margin-right: 10px;
 }
 
+.margin-top-16 {
+  margin-top: 16px;
+}
+
 .width-100 {
   width: 100%;
 }
@@ -327,5 +331,21 @@ select {
 .score {
   width: 104px;
 }
+
+.unansweredQuestion {
+  border-bottom: solid 2px
+}
+
+.selected {
+  border: solid #61dafb 2px;
+  margin: 16px;
+  color: #61dafb;
+}
+
+.notSelected {
+  margin: 16px;
+  border: solid black 2px;
+}
+
 
 

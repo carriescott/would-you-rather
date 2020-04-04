@@ -55,37 +55,39 @@ class QuestionForm extends Component {
         return (
             <div className='center'>
                 <div className='card'>
-                    <h3>Would You Rather?</h3>
-                    <p>{question.author}</p>
-                    <img className="avatar" src={question.avatarURL}/>
-                    <form className='question-form' onSubmit={this.handleSubmit}>
-                        <div className="radio">
-                            <label>
-                                <input type="radio"
-                                       value="optionOne"
-                                       checked={this.state.selectedOption === 'optionOne'}
-                                       onChange={this.handleChange}/>
-                                {question.optionOneText}
-                            </label>
-                        </div>
-                        <div className="radio">
-                            <label>
-                                <input type="radio"
-                                       value="optionTwo"
-                                       checked={this.state.selectedOption === 'optionTwo'}
-                                       onChange={this.handleChange}/>
-                                {question.optionTwoText}
-                            </label>
-                        </div>
-
-                        <button
+                    <div className='nameContainer'>
+                        <p>{question.author} asks would you rather ...</p>
+                    </div>
+                    <div className='row unansweredQuestion'>
+                        <img className="avatar" src={question.avatarURL}/>
+                        <form className='question-form' onSubmit={this.handleSubmit}>
+                            <div className="radio">
+                                <label>
+                                    <input type="radio"
+                                           value="optionOne"
+                                           checked={this.state.selectedOption === 'optionOne'}
+                                           onChange={this.handleChange}/>
+                                    {question.optionOneText}
+                                </label>
+                            </div>
+                            <div className="radio">
+                                <label>
+                                    <input type="radio"
+                                           value="optionTwo"
+                                           checked={this.state.selectedOption === 'optionTwo'}
+                                           onChange={this.handleChange}/>
+                                    {question.optionTwoText}
+                                </label>
+                            </div>
+                            <button
+                            className='btn'
                             type='submit'
                             disabled={this.state.selectedOption === ''}>
-                            Save
-                        </button>
-
-                    </form>
-            </div>
+                                Save
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
 
 
