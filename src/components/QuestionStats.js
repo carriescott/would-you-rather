@@ -16,9 +16,6 @@ class QuestionStats extends Component {
             optionOneSelected = false;
         }
 
-
-
-
         return (
             <div className='center'>
                 <div className='card'>

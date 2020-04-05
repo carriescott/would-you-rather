@@ -11,8 +11,14 @@ class Poll extends Component {
 
     render() {
 
+        const location = this.props.location.pathname;
         if (this.props.authedUser === null) {
-            return <Redirect to='/login' />
+            return <Redirect
+                to={{
+                    pathname: '/login',
+                    state: { from: location }
+                }}
+            />
         }
 
         const authedUser = this.props.authedUser;

@@ -51,13 +51,20 @@ class NewQuestion extends Component {
 
     render() {
 
+        const location = this.props.location.pathname;
+        if (this.props.authedUser === null) {
+            return <Redirect
+                to={{
+                    pathname: '/login',
+                    state: { from: location }
+                }}
+            />
+        }
+
         if (this.state.sent === true) {
             return <Redirect to='/' />
         }
 
-        if (this.props.authedUser === null) {
-            return <Redirect to='/login' />
-        }
 
         const optionOne = this.state.optionOne;
         const optionTwo = this.state.optionTwo;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
+import {NavLink, Redirect} from 'react-router-dom'
 import { connect } from 'react-redux';
-import {removeAuthedUser} from "../actions/authedUser";
+import {handleRemoveAuthedUser} from "../actions/authedUser";
 
 class Navbar extends Component {
 
@@ -10,10 +10,19 @@ class Navbar extends Component {
     handleLogout = (event) => {
         event.preventDefault();
         const { dispatch } = this.props;
-        dispatch(removeAuthedUser(null));
+        dispatch(handleRemoveAuthedUser(null));
     }
 
     render() {
+
+        // if (this.props.authedUser === null) {
+        //     return <Redirect
+        //         to={{
+        //             pathname: '/login',
+        //             state: { from: '/' }
+        //         }}
+        //     />
+        // }
         const userName = this.props.userName;
         const avatar = this.props.userAvatar;
         const userIsAuthed = this.props.userIsAuthed;

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
 import Navbar from './Navbar';
@@ -17,7 +17,14 @@ class App extends Component {
     this.props.dispatch(handleInitialData())
   }
 
+
   render() {
+
+      console.log('props', this.props);
+      const isAuthed = this.props.isAuthed;
+      // const pathTest = this.props.match.params;
+      // console.log('pathTest', pathTest);
+
     return (
         <Router>
             <Fragment>
@@ -25,40 +32,62 @@ class App extends Component {
                     <div>
                         <Navbar />
                         <div>
-                            {this.props.loading === true
-                                ? null
-                                :
+                            {/*{this.props.loading === true*/}
+                            {/*    ? null*/}
+                            {/*    :*/}
+                            {/*<Route*/}
+                            {/*    path='/' exact*/}
+                            {/*    component={Dashboard}*/}
+                            {/*/>}*/}
+                            <Switch>
                             <Route
-                                path='/' exact
+                                exact
+                                path='/'
                                 component={Dashboard}
-                            />}
+                            />
                             <Route
                                 path='/login'
-                                exact component={Login}
+                                component={Login}
                             />
                             <Route
+                                exact
                                 path='/leaderboard'
-                                exact component={Leaderboard}
+                                component={Leaderboard}
                             />
                             <Route
+                                exact
                                 path='/questions/:question_id'
-                                exact component={Poll} />
+                                component={Poll} />
                             <Route
                                 path='/add'
-                                exact component={NewQuestion}
+                                component={NewQuestion}
                             />
                             <Route
-                                path='/404'
-                                exact component={NoPageFound}
+                                component={NoPageFound}
                             />
+                            </Switch>
                         </div>
-                        {/*}*/}
                     </div>
             </Fragment>
         </Router>
     )
   }
 }
+
+// const PrivateRoute = connect(mapStateToProps)(
+//     ({ component: Component, authedUser, ...rest }) => (
+//         <Route
+//             {...rest}
+//             render={props =>
+//                 authedUser !== null ? (
+//                     <Component {...props} />
+//                 ) : (
+//                     <Redirect push to="/login" />
+//                 )
+//             }
+//         />
+//     )
+// );
 
 function mapStateToProps ({authedUser, users, questions, loadingBar}) {
     return{

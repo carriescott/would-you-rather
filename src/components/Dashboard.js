@@ -11,9 +11,17 @@ class Dashboard extends Component {
 
 
     render() {
+
+        const location = this.props.location.pathname;
         if (this.props.authedUser === null) {
-            return <Redirect to='/login' />
-            }
+            return <Redirect
+                to={{
+                    pathname: '/login',
+                    state: { from: location }
+                }}
+            />
+        }
+
         const user = this.props.user;
         const answered = this.props.answered;
         const unanswered = this.props.unanswered;

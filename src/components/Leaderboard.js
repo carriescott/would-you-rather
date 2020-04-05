@@ -7,10 +7,15 @@ class Leaderboard extends Component {
 
     render() {
 
+        const location = this.props.location.pathname;
         if (this.props.authedUser === null) {
-            return <Redirect to='/login' />
+            return <Redirect
+                to={{
+                    pathname: '/login',
+                    state: { from: location }
+                }}
+            />
         }
-
         const users = this.props.users;
         const keys = users ? Object.keys(users): null;
 

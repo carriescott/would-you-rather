@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {setAuthedUser} from '../actions/authedUser';
 import {Redirect} from "react-router-dom";
+import {handleSetAuthedUser} from '../actions/authedUser';
 
 class Login extends Component {
 
@@ -17,22 +17,24 @@ class Login extends Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault();
+        event.preventDefault();;
         const { dispatch } = this.props;
         const AUTHED_ID = this.state.value;
-        dispatch(setAuthedUser(AUTHED_ID));
-
+        dispatch(handleSetAuthedUser(AUTHED_ID));
         //set state redirect as true to redirect to the dashboard
         this.setState(() => ({
-            value: '-',
+            value: 'Please set a user',
             redirect: true
         }))
     }
 
     render() {
 
-        if (this.state.redirect && this.props.authedUser) {
-            return <Redirect to='/' />
+        const returnPath = this.props.location? this.props.location : null;
+        console.log('returnPath', returnPath);
+
+        if (this.state.redirect) {
+            return <Redirect to={this.props.location.state.from} />
         }
 
         const users = this.props.users;
@@ -69,10 +71,9 @@ class Login extends Component {
 }
 
 // return the users and authuser states from the redux store and map to props
-function mapStateToProps({users, authedUser}) {
+function mapStateToProps({users}) {
     return {
         users,
-        authedUser
     };
 }
 
