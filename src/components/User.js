@@ -9,15 +9,15 @@ class User extends Component {
 
             <div className='card'>
                 <div className='col'>
-                    <div className='nameContainer'>
+                    <div className='name-container'>
                         <p>{user.name}</p>
                     </div>
 
-                    <div className='questionInformation'>
+                    <div className='question-information'>
                         <div className='col'>
                             <img className='avatar'
                                  src={user.avatar}
-                                 alt={`Avatar of ${user.name}`}
+                                 alt={'Avatar of ${name}'}
                             />
                         </div>
                         <div className='col scoreText'>

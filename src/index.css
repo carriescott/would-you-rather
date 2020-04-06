@@ -332,10 +332,9 @@ select {
   width: 104px;
 }
 
-.unansweredQuestion {
+.unanswered-question {
   border-bottom: solid 2px;
 }
-
 
 .selected {
   border: solid #61dafb 2px;
@@ -348,13 +347,12 @@ select {
   border: solid black 2px;
 }
 
-
 .margin-tb-8 {
   margin-top: 8px;
   margin-bottom: 8px;
 }
 
-.radioContainer {
+.radio-container {
   display: flex;
   flex-direction: column;
 }

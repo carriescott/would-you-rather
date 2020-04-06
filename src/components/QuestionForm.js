@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
-import {handleSaveAnswer} from "../actions/questions";
+import { handleSaveAnswer } from "../actions/questions";
 
-//controlled component
 class QuestionForm extends Component {
-
     state = {
         selectedOption: '',
         redirect: false
@@ -21,49 +19,44 @@ class QuestionForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-
         const authedUser = this.props.authedUser;
         const qid = this.props.question.id;
         const answer = this.state.selectedOption;
-
         const info = {
             authedUser,
             qid,
             answer
         }
-        console.log('info', info);
         const { dispatch } = this.props;
-        // // add question to store
         dispatch(handleSaveAnswer(info))
-        // //return state to ''
         this.setState(() => ({
             optionSelected: '',
             redirect: true
-        }))
+        }));
     }
 
     render() {
 
-        const optionOne = this.state.optionSelected;
         const question = this.props.question;
         const id = this.props.question.id;
 
         if (this.state.redirect) {
-
             return <Redirect to={`/questions/${id}`} />
         }
 
-        console.log(this.props);
         return (
-            <div className='center'>
-                <div className='card'>
-                    <div className='nameContainer'>
+            <section className='center margin-top-16' id='question-container'>
+                <div className='card' id='question-content'>
+                    <div className='name-container'>
                         <p>{question.author} asks would you rather ...</p>
                     </div>
-                    <div className='unansweredQuestion'>
-                        <img className="avatar" src={question.avatarURL}/>
+                    <div className='unanswered-question'>
+                        <img className="avatar"
+                             src={question.avatarURL}
+                             alt={`Avatar of ${question.author}`}
+                        />
                         <form onSubmit={this.handleSubmit}>
-                            <div id='radioContainer'>
+                            <div id='radio-container'>
                                 <div className="radio">
                                     <label>
                                         <input type="radio"
@@ -83,18 +76,15 @@ class QuestionForm extends Component {
                                     </label>
                                 </div>
                             </div>
-                            <button
-                            className='btn margin-tb-8'
-                            type='submit'
-                            disabled={this.state.selectedOption === ''}>
+                            <button className='btn margin-tb-8'
+                                    type='submit'
+                                    disabled={this.state.selectedOption === ''}>
                                 Save
                             </button>
                         </form>
                     </div>
                 </div>
-            </div>
-
-
+            </section>
         )
     }
 }
@@ -106,5 +96,4 @@ function mapStateToProps ({authedUser}) {
     };
 }
 
-// invoke second function that is returned and passing it in Dashboard
 export default connect(mapStateToProps)(QuestionForm)
