@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import User from "./User";
-import {Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class Leaderboard extends Component {
 
@@ -18,7 +18,6 @@ class Leaderboard extends Component {
         }
         const users = this.props.users;
         const keys = users ? Object.keys(users): null;
-
         const formatUsers =  keys !== null
             ? keys.map(key => ({
             id: users[key].id,
@@ -29,10 +28,8 @@ class Leaderboard extends Component {
             avatar: users[key].avatarURL
         })).sort((a,b) => b.score - a.score) : [];
 
-        console.log('formatUsers', formatUsers);
-
         return (
-            <div className='center'>
+            <section className='center' id='leaderboard'>
                 <h3>Leaderboard</h3>
                 <ul>
                     {formatUsers.map((user) => (
@@ -41,8 +38,7 @@ class Leaderboard extends Component {
                         </li>
                     ))}
                 </ul>
-
-            </div>
+            </section>
         )
     }
 }
