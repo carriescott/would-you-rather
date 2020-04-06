@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Redirect} from "react-router-dom";
-import {handleSetAuthedUser} from '../actions/authedUser';
+import React, { Component } from 'react';
+import { connect} from 'react-redux';
+import { Redirect } from "react-router-dom";
+import { handleSetAuthedUser } from '../actions/authedUser';
 
 class Login extends Component {
 
@@ -17,30 +17,29 @@ class Login extends Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault();;
+        event.preventDefault();
         const { dispatch } = this.props;
         const AUTHED_ID = this.state.value;
         dispatch(handleSetAuthedUser(AUTHED_ID));
-        //set state redirect as true to redirect to the dashboard
         this.setState(() => ({
             value: 'Please set a user',
             redirect: true
-        }))
+        }));
     }
 
     render() {
 
-        const returnPath = this.props.location? this.props.location : null;
-        console.log('returnPath', returnPath);
+        const returnPath = this.props.location? this.props.location.state.from : '/';
 
         if (this.state.redirect) {
-            return <Redirect to={this.props.location.state.from} />
+            return <Redirect to={returnPath} />
         }
 
         const users = this.props.users;
         const names = Object.keys(users);
+
         return (
-            <div className='card center marginTop'>
+            <section className='card center margin-top-40'>
                 <h3>Welcome to the Would You Rather App</h3>
                 <p>Please log in to continue</p>
                 <img className='imgLogin' src='https://gravatar.com/avatar/63f79fd9cd4afe69f4478e306579d16d?s=200&d=robohash&r=x'/>
@@ -64,13 +63,11 @@ class Login extends Component {
                         Let's Play
                     </button>
                 </form>
-            </div>
-
+            </section>
         )
     }
 }
 
-// return the users and authuser states from the redux store and map to props
 function mapStateToProps({users}) {
     return {
         users,
