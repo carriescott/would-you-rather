@@ -42,7 +42,9 @@ class Login extends Component {
             <section className='card center margin-top-40'>
                 <h3>Welcome to the Would You Rather App</h3>
                 <p>Please log in to continue</p>
-                <img className='imgLogin' src='https://gravatar.com/avatar/63f79fd9cd4afe69f4478e306579d16d?s=200&d=robohash&r=x'/>
+                <img className='img-login'
+                     src='https://gravatar.com/avatar/63f79fd9cd4afe69f4478e306579d16d?s=200&d=robohash&r=x'
+                     alt='login image'/>
                 <form onSubmit={(event) => this.handleSubmit(
                     event)} className='col'>
                     <select
