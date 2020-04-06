@@ -4,15 +4,13 @@ class User extends Component {
 
     render() {
         const user = this.props.user;
-        //map over the users for each question in order to obtain name and avatar.
         return (
 
-            <div className='card'>
-                <div className='col'>
+            <section className='card' id='user-score-container'>
+                <div className='col' id='user-score-contents'>
                     <div className='name-container'>
                         <p>{user.name}</p>
                     </div>
-
                     <div className='question-information'>
                         <div className='col'>
                             <img className='avatar'
@@ -20,21 +18,16 @@ class User extends Component {
                                  alt={'Avatar of ${name}'}
                             />
                         </div>
-                        <div className='col scoreText'>
+                        <div className='col score-text'>
                             <p>Answered: {user.numberAnswered}</p>
                             <p>Asked: {user.numberAsked}</p>
                         </div>
                         <div className='score'>
                             <h1>{user.score}</h1>
                         </div>
-
                     </div>
-
                 </div>
-            </div>
-
-
-
+            </section>
         )
     }
 }
