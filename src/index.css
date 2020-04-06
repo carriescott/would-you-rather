@@ -342,7 +342,7 @@ select {
   color: #61dafb;
 }
 
-.notSelected {
+.not-selected {
   margin: 16px;
   border: solid black 2px;
 }
