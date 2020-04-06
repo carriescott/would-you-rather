@@ -1,7 +1,6 @@
 import  { RECEIVE_USERS } from '../actions/users'
 import {ADD_QUESTION, ADD_QUESTION_ANSWER} from '../actions/questions'
 
-
 export default function users (state={}, action) {
     switch(action.type) {
         case RECEIVE_USERS :
@@ -9,7 +8,6 @@ export default function users (state={}, action) {
                 ...state,
                 ...action.users
             };
-        //    review to understand is happening there - compare to tweet replies
         case ADD_QUESTION :
             return {
                 ...state,
