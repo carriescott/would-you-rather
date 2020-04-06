@@ -26,12 +26,8 @@ function addQuestionAnswer (info) {
     }
 }
 
-// Asynchronous Action Creator
-// Manages asynchronous requests
-
 export function handleSaveQuestion (question) {
-    return (dispatch, getState) => {
-        // const { authedUser } = getState()
+    return (dispatch) => {
         dispatch(showLoading())
         return saveQuestion(question)
             .then ((question) => dispatch(addQuestion(question)))
@@ -40,8 +36,7 @@ export function handleSaveQuestion (question) {
 }
 
 export function handleSaveAnswer (info) {
-    return (dispatch, getState) => {
-        // const { authedUser } = getState()
+    return (dispatch) => {
         dispatch(showLoading())
         return saveQuestionAnswer(info)
             .then ((question) => dispatch(addQuestionAnswer(info)))
