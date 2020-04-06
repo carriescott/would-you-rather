@@ -53,7 +53,7 @@ class Poll extends Component {
                 question.optionOne.votes.includes(authedUser) ||
                 question.optionTwo.votes.includes(authedUser);
         }
-        
+
         let render = null;
 
         if (!matchFound) {

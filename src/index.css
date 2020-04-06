@@ -219,7 +219,7 @@ li {
   flex-direction: column;
 }
 
-.questionInformation {
+.question-information {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -303,7 +303,7 @@ select {
   margin-right: auto;
   width: 400px;
 }
-.nameContainer {
+.name-container {
   border-bottom: solid 2px;
   border-color: black;
   width: 100%;

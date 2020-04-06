@@ -14,18 +14,13 @@ class Question extends Component {
         const avatar = this.props.users[question.author].avatarURL;
         const id = question.id;
 
-        console.log('props', this.props);
-
-        //map over the users for each question in order to obtain name and avatar.
         return (
-
-                <div className='card'>
-                    <div className='col'>
-                        <div className='nameContainer'>
+                <section className='card' id='question-container'>
+                    <div className='col' id='question-content'>
+                        <div className='name-container'>
                             <p>{name} asks would you rather ...</p>
                         </div>
-
-                        <div className='questionInformation'>
+                        <div className='question-information'>
                             <div className='col'>
                                 <img className='avatar'
                                      src={avatar}
@@ -42,13 +37,10 @@ class Question extends Component {
                             </div>
                         </div>
                     </div>
-
-                </div>
-
+                </section>
         )
     }
 }
-
 
 function mapStateToProps ({users}) {
     return {
@@ -56,5 +48,4 @@ function mapStateToProps ({users}) {
     };
 }
 
-// invoke second function that is returned and passing it in Dashboard
 export default withRouter(connect(mapStateToProps)(Question))
