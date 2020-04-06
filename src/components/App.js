@@ -74,21 +74,6 @@ class App extends Component {
   }
 }
 
-// const PrivateRoute = connect(mapStateToProps)(
-//     ({ component: Component, authedUser, ...rest }) => (
-//         <Route
-//             {...rest}
-//             render={props =>
-//                 authedUser !== null ? (
-//                     <Component {...props} />
-//                 ) : (
-//                     <Redirect push to="/login" />
-//                 )
-//             }
-//         />
-//     )
-// );
-
 function mapStateToProps ({authedUser, users, questions, loadingBar}) {
     return{
         users,

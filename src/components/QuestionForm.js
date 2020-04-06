@@ -46,9 +46,11 @@ class QuestionForm extends Component {
 
         const optionOne = this.state.optionSelected;
         const question = this.props.question;
+        const id = this.props.question.id;
 
         if (this.state.redirect) {
-            return <Redirect to='/' />
+
+            return <Redirect to={`/questions/${id}`} />
         }
 
         console.log(this.props);
@@ -58,29 +60,31 @@ class QuestionForm extends Component {
                     <div className='nameContainer'>
                         <p>{question.author} asks would you rather ...</p>
                     </div>
-                    <div className='row unansweredQuestion'>
+                    <div className='unansweredQuestion'>
                         <img className="avatar" src={question.avatarURL}/>
-                        <form className='question-form' onSubmit={this.handleSubmit}>
-                            <div className="radio">
-                                <label>
-                                    <input type="radio"
-                                           value="optionOne"
-                                           checked={this.state.selectedOption === 'optionOne'}
-                                           onChange={this.handleChange}/>
-                                    {question.optionOneText}
-                                </label>
-                            </div>
-                            <div className="radio">
-                                <label>
-                                    <input type="radio"
-                                           value="optionTwo"
-                                           checked={this.state.selectedOption === 'optionTwo'}
-                                           onChange={this.handleChange}/>
-                                    {question.optionTwoText}
-                                </label>
+                        <form onSubmit={this.handleSubmit}>
+                            <div id='radioContainer'>
+                                <div className="radio">
+                                    <label>
+                                        <input type="radio"
+                                               value="optionOne"
+                                               checked={this.state.selectedOption === 'optionOne'}
+                                               onChange={this.handleChange}/>
+                                        {question.optionOneText}
+                                    </label>
+                                </div>
+                                <div className="radio">
+                                    <label>
+                                        <input type="radio"
+                                               value="optionTwo"
+                                               checked={this.state.selectedOption === 'optionTwo'}
+                                               onChange={this.handleChange}/>
+                                        {question.optionTwoText}
+                                    </label>
+                                </div>
                             </div>
                             <button
-                            className='btn'
+                            className='btn margin-tb-8'
                             type='submit'
                             disabled={this.state.selectedOption === ''}>
                                 Save

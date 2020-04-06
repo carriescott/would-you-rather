@@ -71,7 +71,6 @@ class Poll extends Component {
         //map over the users for each question in order to obtain name and avatar.
         return (
             <div>
-                <h3>Poll</h3>
                 {render}
             </div>
         )
