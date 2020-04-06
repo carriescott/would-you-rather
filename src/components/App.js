@@ -24,35 +24,35 @@ class App extends Component {
                 <LoadingBar />
                     <div>
                         <Navbar />
-                        <div>
-                            <Switch>
-                            <Route
-                                exact
-                                path='/'
-                                component={Dashboard}
-                            />
-                            <Route
-                                path='/login'
-                                component={Login}
-                            />
-                            <Route
-                                exact
-                                path='/leaderboard'
-                                component={Leaderboard}
-                            />
-                            <Route
-                                exact
-                                path='/questions/:question_id'
-                                component={Poll} />
-                            <Route
-                                path='/add'
-                                component={NewQuestion}
-                            />
-                            <Route
-                                component={NoPageFound}
-                            />
-                            </Switch>
-                        </div>
+                            <div>
+                                <Switch>
+                                    <Route
+                                        exact
+                                        path='/'
+                                        component={Dashboard}
+                                    />
+                                    <Route
+                                        path='/login'
+                                        component={Login}
+                                    />
+                                    <Route
+                                        exact
+                                        path='/leaderboard'
+                                        component={Leaderboard}
+                                    />
+                                    <Route
+                                        exact
+                                        path='/questions/:question_id'
+                                        component={Poll}/>
+                                    <Route
+                                        path='/add'
+                                        component={NewQuestion}
+                                    />
+                                    <Route
+                                        component={NoPageFound}
+                                    />
+                                </Switch>
+                            </div>
                     </div>
             </Fragment>
         </Router>

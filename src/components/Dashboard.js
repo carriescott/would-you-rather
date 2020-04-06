@@ -25,7 +25,9 @@ class Dashboard extends Component {
         const showAnsweredQuestions = this.state.showAnsweredQuestions;
 
         return (
-            <section className='center'id='questions-list-container'>
+            <div> {this.props.loading === true
+                ? null
+                : <section className='center'id='questions-list-container'>
                 <div className='center btn-container'>
                     <button
                         className={showAnsweredQuestions ? 'btn margin-10-lr' : 'active btn margin-10-lr' }
@@ -56,11 +58,14 @@ class Dashboard extends Component {
                     </ul>
                 </div>
             </section>
+            }
+
+            </div>
         )
     }
 }
 
-function mapStateToProps ({authedUser, questions, users}) {
+function mapStateToProps ({authedUser, questions, users, loadingBar}) {
     const user = users[authedUser];
     const questionsArray = Object.values(questions);
     const authedUserAnswerIds = (user !== undefined)
@@ -71,6 +76,8 @@ function mapStateToProps ({authedUser, questions, users}) {
         .sort((a,b) => b.timestamp - a.timestamp);
 
     return {
+        loadingBar,
+        loading: loadingBar.default === 1,
         authedUser,
         questions,
         users,
