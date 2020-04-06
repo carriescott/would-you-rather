@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
 import Navbar from './Navbar';
@@ -17,14 +17,7 @@ class App extends Component {
     this.props.dispatch(handleInitialData())
   }
 
-
   render() {
-
-      console.log('props', this.props);
-      const isAuthed = this.props.isAuthed;
-      // const pathTest = this.props.match.params;
-      // console.log('pathTest', pathTest);
-
     return (
         <Router>
             <Fragment>
@@ -32,13 +25,6 @@ class App extends Component {
                     <div>
                         <Navbar />
                         <div>
-                            {/*{this.props.loading === true*/}
-                            {/*    ? null*/}
-                            {/*    :*/}
-                            {/*<Route*/}
-                            {/*    path='/' exact*/}
-                            {/*    component={Dashboard}*/}
-                            {/*/>}*/}
                             <Switch>
                             <Route
                                 exact
