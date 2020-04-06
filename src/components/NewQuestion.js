@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
-import {handleSaveQuestion} from "../actions/questions";
+import { handleSaveQuestion } from "../actions/questions";
 
-//controlled component
 class NewQuestion extends Component {
 
     state = {
@@ -39,9 +38,7 @@ class NewQuestion extends Component {
             author
         }
         const { dispatch } = this.props;
-        // add question to store
         dispatch(handleSaveQuestion(question));
-        //return state to ''
         this.setState(() => ({
             sent: true,
             optionOne: '',
@@ -52,6 +49,7 @@ class NewQuestion extends Component {
     render() {
 
         const location = this.props.location.pathname;
+
         if (this.props.authedUser === null) {
             return <Redirect
                 to={{
@@ -65,15 +63,11 @@ class NewQuestion extends Component {
             return <Redirect to='/' />
         }
 
-
         const optionOne = this.state.optionOne;
         const optionTwo = this.state.optionTwo;
 
-
-        console.log(this.props);
-        console.log('state', this.state);
         return (
-            <div className='center'>
+            <section className='center' id='new-question-container'>
                 <h3 className='center'>Would You Rather ... </h3>
                 <p>To create a new question your options in the fields provided</p>
                 <form className='new-question-form' onSubmit={this.handleSubmit}>
@@ -98,14 +92,12 @@ class NewQuestion extends Component {
                     />
                     <button
                         className='btn'
-                    type='submit'
-                    disabled={this.state.optionOne === '' || this.state.optionTwo === ''}>
+                        type='submit'
+                        disabled={this.state.optionOne === '' || this.state.optionTwo === ''}>
                         Save
                     </button>
                 </form>
-            </div>
-
-
+            </section>
         )
     }
 }
@@ -118,5 +110,4 @@ function mapStateToProps ({users, authedUser}) {
     };
 }
 
-// invoke second function that is returned and passing it in Dashboard
 export default connect(mapStateToProps)(NewQuestion)

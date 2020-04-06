@@ -173,7 +173,7 @@ li {
 }
 
 
-.userAvatar {
+.user-avatar {
   height: 50px;
   width: 50px;
   border-radius: 21px;
@@ -273,28 +273,28 @@ select {
   margin-bottom: 40px;
 }
 
-.userInfo {
+.user-info-container {
   display: flex;
   flex-direction: row;
 }
 
-.userInfo p{
+.user-info-container p{
   margin: 0;
   font-size: 14px;
   padding: 0;
 }
 
-.userInfo .btn {
+.user-info-container .btn {
   margin-top: 8px;
 }
 
-.navContainer {
+.nav-container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-.userInformation {
+.user-info {
   align-items: center;
 }
 
