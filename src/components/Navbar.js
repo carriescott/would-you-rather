@@ -41,7 +41,10 @@ class Navbar extends Component {
                 {userIsAuthed ?
                     <section className='user-info-container center'>
                         <div className='col user-info' >
-                            <img className='user-avatar' src={avatar}/>
+                            <img className='user-avatar'
+                                 src={avatar}
+                                 alt={`Avatar of ${userName}`}
+                            />
                             <p>Hi {userName}</p>
                             <button className='btn'
                                     onClick={(event) => this.handleLogout(

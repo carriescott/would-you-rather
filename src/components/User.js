@@ -15,7 +15,7 @@ class User extends Component {
                         <div className='col'>
                             <img className='avatar'
                                  src={user.avatar}
-                                 alt={'Avatar of ${name}'}
+                                 alt={`Avatar of ${user.name}`}
                             />
                         </div>
                         <div className='col score-text'>

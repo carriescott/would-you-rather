@@ -24,7 +24,7 @@ class Question extends Component {
                             <div className='col'>
                                 <img className='avatar'
                                      src={avatar}
-                                     alt={'Avatar of ${name}'}
+                                     alt={`Avatar of ${name}`}
                                 />
                             </div>
                             <div className='col width-100'>

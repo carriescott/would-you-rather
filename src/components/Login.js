@@ -44,7 +44,7 @@ class Login extends Component {
                 <p>Please log in to continue</p>
                 <img className='img-login'
                      src='https://gravatar.com/avatar/63f79fd9cd4afe69f4478e306579d16d?s=200&d=robohash&r=x'
-                     alt='login image'/>
+                     alt='login'/>
                 <form onSubmit={(event) => this.handleSubmit(
                     event)} className='col'>
                     <select
