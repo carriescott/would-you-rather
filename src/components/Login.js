@@ -59,7 +59,7 @@ class Login extends Component {
                         ))}
                     </select>
                     <button
-                        className='btn margin-top-16'
+                        className='btn margin-tb-16'
                         type="submit"
                         disabled={this.state.value === 'Please set a user'}>
                         Let's Play

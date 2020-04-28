@@ -4,8 +4,7 @@ class QuestionStats extends Component {
 
     render() {
         const question = this.props.question;
-        const selectedOption = question.pickedOptionOne ?
-            question.optionOneText : question.optionTwoText;
+        const selectedOption = question.pickedOptionOne ? question.optionOneText : question.optionTwoText;
         const optionOneSelected = (selectedOption === question.optionOneText) ? true : false;
 
         return (
@@ -20,13 +19,13 @@ class QuestionStats extends Component {
                     <section className={optionOneSelected ? 'selected' : 'not-selected'}>
                         <p className='margin-tb-8'>...{question.optionOneText}...</p>
                         <p className='margin-tb-8'>Votes: {question.optionOneTotal}/{question.totalVotes}</p>
-                        <h2>{question.optionOnePercent} %</h2>
+                        <h2 className='margin-tb-8'>{question.optionOnePercent} %</h2>
                     </section>
 
                     <section className={optionOneSelected ? 'not-selected' : 'selected'}>
                         <p className='margin-tb-8'>...{question.optionTwoText}...</p>
                         <p className='margin-tb-8'>Votes: {question.optionTwoTotal}/{question.totalVotes}</p>
-                        <h2>{question.optionTwoPercent} %</h2>
+                        <h2 className='margin-tb-8'>{Math.round(question.optionTwoPercent)} %</h2>
                     </section>
                     <p>You would rather {selectedOption}</p>
                 </section>

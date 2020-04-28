@@ -247,19 +247,26 @@ select {
 }
 
 .selected {
-  border: solid #61dafb 2px;
+  border: solid #1cf9e8 2px;
   margin: 16px;
-  color: #61dafb;
+  color: #1cf9e8;
+  border-radius: 4px;
 }
 
 .not-selected {
   margin: 16px;
   border: solid black 2px;
+  border-radius: 4px;
 }
 
 .margin-tb-8 {
   margin-top: 8px;
   margin-bottom: 8px;
+}
+
+.margin-tb-16 {
+  margin-top: 16px;
+  margin-bottom: 16px
 }
 
 .radio-container {

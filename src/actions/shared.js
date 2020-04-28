@@ -9,10 +9,10 @@ export function handleInitialData () {
         dispatch(showLoading())
         return getInitialData()
             .then(({ users, questions }) => {
-                dispatch(receiveUsers(users))
-                dispatch(receiveQuestions(questions))
-                dispatch(hideLoading())
-            })
-    }
+                dispatch(receiveUsers(users));
+                dispatch(receiveQuestions(questions));
+                dispatch(hideLoading());
+            });
+    };
 }
 

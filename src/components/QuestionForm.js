@@ -56,8 +56,8 @@ class QuestionForm extends Component {
                              alt={`Avatar of ${question.author}`}
                         />
                         <form onSubmit={this.handleSubmit}>
-                            <div id='radio-container'>
-                                <div className="radio">
+                            <div id='radio-container' className='margin-tb-8'>
+                                <div className='radio margin-tb-8'>
                                     <label>
                                         <input type="radio"
                                                value="optionOne"
@@ -76,7 +76,7 @@ class QuestionForm extends Component {
                                     </label>
                                 </div>
                             </div>
-                            <button className='btn margin-tb-8'
+                            <button className='btn margin-tb-16'
                                     type='submit'
                                     disabled={this.state.selectedOption === ''}>
                                 Save

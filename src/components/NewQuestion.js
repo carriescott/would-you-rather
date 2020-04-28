@@ -91,7 +91,7 @@ class NewQuestion extends Component {
                         maxLength="60"
                     />
                     <button
-                        className='btn'
+                        className='btn margin-top-16'
                         type='submit'
                         disabled={this.state.optionOne === '' || this.state.optionTwo === ''}>
                         Save

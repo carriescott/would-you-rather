@@ -9,21 +9,21 @@ export function receiveQuestions (questions) {
     return {
         type: RECEIVE_QUESTIONS,
         questions,
-    }
+    };
 }
 
 function addQuestion (question) {
     return {
         type: ADD_QUESTION,
         question,
-    }
+    };
 }
 
 function addQuestionAnswer (info) {
     return {
         type: ADD_QUESTION_ANSWER,
         info
-    }
+    };
 }
 
 export function handleSaveQuestion (question) {
@@ -32,7 +32,7 @@ export function handleSaveQuestion (question) {
         return saveQuestion(question)
             .then ((question) => dispatch(addQuestion(question)))
             .then(() => dispatch(hideLoading()))
-    }
+    };
 }
 
 export function handleSaveAnswer (info) {
@@ -41,10 +41,5 @@ export function handleSaveAnswer (info) {
         return saveQuestionAnswer(info)
             .then ((question) => dispatch(addQuestionAnswer(info)))
             .then(() => dispatch(hideLoading()))
-    }
+    };
 }
-
-
-
-
-
