@@ -6,7 +6,6 @@ import { Redirect } from "react-router-dom";
 class Leaderboard extends Component {
 
     render() {
-
         const location = this.props.location.pathname;
         if (this.props.authedUser === null) {
             return <Redirect

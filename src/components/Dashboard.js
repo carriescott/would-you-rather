@@ -4,13 +4,11 @@ import Question from './Question';
 import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
-
     state = {
         showAnsweredQuestions: false,
     }
 
     render() {
-
         const location = this.props.location.pathname;
         if (this.props.authedUser === null) {
             return <Redirect
@@ -85,7 +83,6 @@ function mapStateToProps ({authedUser, questions, users, loadingBar}) {
         answered,
         unanswered,
     };
-
 }
 
 export default connect(mapStateToProps)(Dashboard)
