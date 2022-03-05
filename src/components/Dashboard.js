@@ -45,7 +45,6 @@ class Dashboard extends Component {
                         </li>
                     ))}
                 </ul>
-
                 <div className='center'>
                     <ul className={showAnsweredQuestions ? 'hide' : 'show'}>
                         {unanswered.map((question) => (
@@ -57,7 +56,6 @@ class Dashboard extends Component {
                 </div>
             </section>
             }
-
             </div>
         )
     }
