@@ -1,8 +1,5 @@
 version: 0.2
 env:
-  variables:
-    BUILD_FOLDER: "static"
-    BUILD_ENV: "prod"
 phases:
   install:
     runtime-versions:
@@ -24,4 +21,4 @@ artifacts:
   files:
     - '**/*'
   discard-paths: no
-  base-directory: 'build/${BUILD_FOLDER}'
+  base-directory: 'build'
